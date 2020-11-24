@@ -11,6 +11,7 @@ func main() {
 	engine.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "hello world",
+			"params":  c.Query("a"),
 		})
 	})
 	engine.Run(":3000")
