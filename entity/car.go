@@ -1,72 +1,70 @@
 package entity
 
 type Car struct {
-	ID uint `json:"id"`
-	Name string `json:"name"`
-  Grade string
-  "manufacture" varchar(255)
-  "model_year" varchar(255)
-  "model_number" varchar(255)
-  "body_type" varchar(255)
-  "door_num" int
-  "color" varchar(255)
-  "drive_system" varchar(255)
-  "transmission" varchar(255)
-  "displacement" int
-  "gas_oil" varchar(255)
-  "seating_capacity" int
-  "ex_point" int
-  "in_point" int
-  "one_owner" int
-  "repair_history" int
-  "non_smoking" int
-  "certified_used" int
-  "recycling_consignment" int
-  "leagal_maintenance" int
-  "warranty" int
-  "purchase_price" int
-  "description" varchar(255)
-  "pw_steering" int
-  "pw_window" int
-  "aircon" int
-  "w_aircon" int
-  "keyless" int
-  "smart_key" int
-  "car_nabigation" int
-  "tv" int
-  "audio" int
-  "visual" int
-  "bluetooth" int
-  "usb" int
-  "pw_supply" int
-  "back_camera" int
-  "around_camera" int
-  "etc" int
-  "third_seat" int
-  "ele_seat" int
-  "seat_heater" int
-  "seat_aircon" int
-  "leather_seat" int
-  "slide_door" int
-  "ele_gate" int
-  "walk_through" int
-  "cruise_control" int
-  "lane_assist" int
-  "obstacle_sensor" int
-  "auto_parking" int
-  "parking_assist" int
-  "abs" int
-  "stability_control" int
-  "mitigation_brake" int
-  "head_light" int
-  "sun_roof" int
-  "aero" int
-  "al_wheel" int
-  "low_down" int
-  "lift_up" int
-  "super_charger" int
-  "air_suspension" int
-  "create_at" datetime
-  "update_at" datetime
-  "delete_at" datetime
+	ID                   uint   `json:"id"`
+	Name                 string `json:"name"`
+	Grade                string `json:"grade"`
+	Manufacture          string `json:"manufacture"`
+	ModelYear            string `json:"model_year"`
+	ModelNumber          int    `json:"door_num"`
+	Color                string `json:"color"`
+	DriveSystem          string `json:"drive_system"`
+	Transmission         string `json:"transmission"`
+	Displacement         int    `json:"displacement"`
+	GasOil               string `json:"gas_oil"`
+	SeatingCapacity      int    `json:"seating_capacity"`
+	ExPoint              int    `json:"ex_point"`
+	InPoint              int    `json:"in_point"`
+	OneOwner             int    `json:"one_owner"`
+	RepairHistory        int    `json:"repair_history"`
+	NonSmoking           int    `json:"non_smoking"`
+	CertifiedUsed        int    `json:"certified_used"`
+	RecycringConsignment int    `json:"recycring_consignment"`
+	LeagalMaintenance    int    `json:"leagal_maintenance"`
+	Warranty             int    `json:"warranty"`
+	PurchacePrice        int    `json:"purchace_price"`
+	Description          string `json:"description"`
+	PwSteering           int    `json:"pw_steering"`
+	PwWindow             int    `json:"pw_window"`
+	Aircon               int    `json:"aircon"`
+	WAircon              int    `json:"w_aircon"`
+	Keyless              int    `json:"keyless"`
+	SmartKey             int    `json:"smart_key"`
+	CarNavigation        int    `json:"car_nabigation"`
+	Tv                   int    `json:"tv"`
+	Audio                int    `json:"audio"`
+	Visual               int    `json:"visual"`
+	Bluetooth            int    `json:"bluetooth"`
+	Usb                  int    `json:"usb"`
+	Pw_supply            int    `json:"pw_supply"`
+	BackCamera           int    `json:"back_camera"`
+	AroundCamera         int    `json:"around_camera"`
+	Etc                  int    `json:"etc"`
+	ThirdSeat            int    `json:"third_seat"`
+	EleSeat              int    `json:"ele_seat"`
+	SeatHeater           int    `json:"seat_heater"`
+	SeatAircon           int    `json:"seat_aircon"`
+	LeatherSeat          int    `json:"leather_seat"`
+	SlideDoor            int    `json:"slide_door"`
+	EleGate              int    `json:"ele_gate"`
+	WalkThrough          int    `json:"walk_through"`
+	CruiseControl        int    `json:"cruise_control"`
+	LaneAssist           int    `json:"lane_assist"`
+	ObstacleSensor       int    `json:"obstacle_sensor"`
+	AutoParking          int    `json:"auto_parking"`
+	ParkingAssist        int    `json:"parking_assist"`
+	Abs                  int    `json:"abs"`
+	StabilityControl     int    `json:"stability_control"`
+	MitigationBrake      int    `json:"mitigation_brake"`
+	HeadLight            int    `json:"head_light"`
+	SunRoof              int    `json:"sun_roof"`
+	Aero                 int    `json:"aero"`
+	AlWheel              int    `json:"al_wheel"`
+	LowDown              int    `json:"low_down"`
+	LiftUp               int    `json:"lift_up"`
+	SuperCharger         int    `json:"super_charger"`
+	AirSuspension        int    `json:"air_suspension"`
+	CreateAt             string `json:"create_at"`
+	UpdateAt             string `json:"update_at"`
+	DeleteAt             string `json:"delete_at"`
 }
