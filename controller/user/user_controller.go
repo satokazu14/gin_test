@@ -2,7 +2,7 @@ package user
 
 import (
 	"fmt"
-	user "gin_test/service"
+	"gin_test/service/user"
 
 	"github.com/gin-gonic/gin"
 )
