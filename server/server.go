@@ -1,7 +1,8 @@
 package server
 
 import (
-	user "gin_test/controller"
+	"gin_test/controller/auction"
+	"gin_test/controller/user"
 
 	"github.com/gin-gonic/gin"
 )
@@ -22,6 +23,16 @@ func router() *gin.Engine {
 		u.POST("", ctrl.Create)
 		u.PUT("/:id", ctrl.Update)
 		u.DELETE("/:id", ctrl.Delete)
+	}
+
+	au := r.Group("/auctions")
+	{
+		ctrl := auction.Controller{}
+		au.GET("", ctrl.Index)
+		au.GET("/:id", ctrl.Show)
+		au.POST("", ctrl.Create)
+		au.PUT("/:id", ctrl.Update)
+		au.DELETE("/:id", ctrl.Delete)
 	}
 
 	return r
