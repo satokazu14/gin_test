@@ -1,4 +1,4 @@
-package auction
+package service
 
 import (
 	"gin_test/db"
@@ -7,11 +7,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type Service struct{}
+type AuctionService struct{}
 
 type Auction entity.Auction
 
-func (s Service) GetAll() ([]Auction, error) {
+func (s AuctionService) GetAll() ([]Auction, error) {
 	db := db.GetDB()
 	var auction []Auction
 
@@ -22,7 +22,7 @@ func (s Service) GetAll() ([]Auction, error) {
 	return auction, nil
 }
 
-func (s Service) CreateModel(c *gin.Context) (Auction, error) {
+func (s AuctionService) CreateModel(c *gin.Context) (Auction, error) {
 	db := db.GetDB()
 	var auction Auction
 
@@ -37,7 +37,7 @@ func (s Service) CreateModel(c *gin.Context) (Auction, error) {
 	return auction, nil
 }
 
-func (s Service) GetByID(id string) (Auction, error) {
+func (s AuctionService) GetByID(id string) (Auction, error) {
 	db := db.GetDB()
 	var auction Auction
 
@@ -48,7 +48,7 @@ func (s Service) GetByID(id string) (Auction, error) {
 	return auction, nil
 }
 
-func (s Service) UpdateByID(id string, c *gin.Context) (Auction, error) {
+func (s AuctionService) UpdateByID(id string, c *gin.Context) (Auction, error) {
 	db := db.GetDB()
 	var auction Auction
 
@@ -65,7 +65,7 @@ func (s Service) UpdateByID(id string, c *gin.Context) (Auction, error) {
 	return auction, nil
 }
 
-func (s Service) DeleteByID(id string) error {
+func (s AuctionService) DeleteByID(id string) error {
 	db := db.GetDB()
 	var auction Auction
 
