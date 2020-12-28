@@ -21,6 +21,18 @@ func (pc AuctionController) Index(c *gin.Context) {
 	}
 }
 
+func (pc AuctionController) Top(c *gin.Context) {
+	var auction service.AuctionService
+	p, err := auction.GetTopInfo()
+
+	if err != nil {
+		c.AbortWithStatus(404)
+		fmt.Println(err)
+	} else {
+		c.JSON(200, p)
+	}
+}
+
 func (pc AuctionController) Create(c *gin.Context) {
 	var auction service.AuctionService
 	p, err := auction.CreateModel(c)

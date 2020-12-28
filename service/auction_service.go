@@ -22,6 +22,21 @@ func (s AuctionService) GetAll() ([]Auction, error) {
 	return auction, nil
 }
 
+func (s AuctionService) GetTopInfo() ([]Auction, error) {
+	db := db.GetDB()
+	var ac []Auction
+
+	if err := db.Find(&ac).Error; err != nil {
+		return nil, err
+	}
+
+	if err := db.Preload("AuctionCars").Find(&ac).Error; err != nil {
+		return nil, err
+	}
+
+	return ac, nil
+}
+
 func (s AuctionService) CreateModel(c *gin.Context) (Auction, error) {
 	db := db.GetDB()
 	var auction Auction

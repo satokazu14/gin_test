@@ -34,5 +34,11 @@ func router() *gin.Engine {
 		au.DELETE("/:id", ctrl.Delete)
 	}
 
+	top := r.Group("/top")
+	{
+		ctrl := controller.AuctionController{}
+		top.GET("", ctrl.Top)
+	}
+
 	return r
 }
