@@ -1,16 +1,16 @@
-package auction
+package controller
 
 import (
 	"fmt"
-	"gin_test/service/auction"
+	"gin_test/service"
 
 	"github.com/gin-gonic/gin"
 )
 
-type Controller struct{}
+type AuctionController struct{}
 
-func (pc Controller) Index(c *gin.Context) {
-	var auction auction.Service
+func (pc AuctionController) Index(c *gin.Context) {
+	var auction service.AuctionService
 	p, err := auction.GetAll()
 
 	if err != nil {
@@ -21,8 +21,8 @@ func (pc Controller) Index(c *gin.Context) {
 	}
 }
 
-func (pc Controller) Create(c *gin.Context) {
-	var auction auction.Service
+func (pc AuctionController) Create(c *gin.Context) {
+	var auction service.AuctionService
 	p, err := auction.CreateModel(c)
 
 	if err != nil {
@@ -33,9 +33,9 @@ func (pc Controller) Create(c *gin.Context) {
 	}
 }
 
-func (pc Controller) Show(c *gin.Context) {
+func (pc AuctionController) Show(c *gin.Context) {
 	id := c.Params.ByName("id")
-	var auction auction.Service
+	var auction service.AuctionService
 	p, err := auction.GetByID(id)
 
 	if err != nil {
@@ -46,9 +46,9 @@ func (pc Controller) Show(c *gin.Context) {
 	}
 }
 
-func (pc Controller) Update(c *gin.Context) {
+func (pc AuctionController) Update(c *gin.Context) {
 	id := c.Params.ByName("id")
-	var auction auction.Service
+	var auction service.AuctionService
 	p, err := auction.UpdateByID(id, c)
 
 	if err != nil {
@@ -59,10 +59,10 @@ func (pc Controller) Update(c *gin.Context) {
 	}
 }
 
-// Delete action: DELETE /users/:id
-func (pc Controller) Delete(c *gin.Context) {
+// Delete action: DELETE /auctions/:id
+func (pc AuctionController) Delete(c *gin.Context) {
 	id := c.Params.ByName("id")
-	var auction auction.Service
+	var auction service.AuctionService
 
 	if err := auction.DeleteByID(id); err != nil {
 		c.AbortWithStatus(403)
