@@ -9,5 +9,5 @@ type Auction struct {
 	UpdateAt    string `json:"update_at"`
 	DeleteAt    string `json:"delete_at"`
 	CarIDs      []int
-	AuctionCars []AuctionCar
+	AuctionCars []Car `gorm:"many2many:auction_cars;"`
 }

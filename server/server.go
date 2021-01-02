@@ -63,6 +63,16 @@ func router() *gin.Engine {
 		au.DELETE("/:id", ctrl.Delete)
 	}
 
+	car := r.Group("/cars")
+	{
+		ctrl := controller.CarController{}
+		car.GET("", ctrl.ShowAllCar)
+		car.GET("/:id", ctrl.ShowCar)
+		car.POST("", ctrl.AddCar)
+		car.PUT("/:id", ctrl.UpdateCar)
+		car.DELETE("/:id", ctrl.DeleteCar)
+	}
+
 	top := r.Group("/top")
 	{
 		ctrl := controller.AuctionController{}
