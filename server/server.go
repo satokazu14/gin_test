@@ -77,7 +77,17 @@ func router() *gin.Engine {
 	{
 		ctrl := controller.AuctionController{}
 		top.GET("", ctrl.Top)
-		top.GET("all", ctrl.TopAll)
+		top.GET("/all", ctrl.TopAll)
+	}
+
+	bid := r.Group("/bids")
+	{
+		ctrl := controller.BidController{}
+		bid.GET("", ctrl.Index)
+		bid.GET("/auction/:id", ctrl.AuctionId)
+		bid.GET("/user/:id", ctrl.UserId)
+		bid.GET("/car/:id", ctrl.CarId)
+		bid.POST("", ctrl.Create)
 	}
 
 	return r
