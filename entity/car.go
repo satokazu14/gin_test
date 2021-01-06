@@ -64,6 +64,7 @@ type Car struct {
 	LiftUp               int    `json:"lift_up"`
 	SuperCharger         int    `json:"super_charger"`
 	AirSuspension        int    `json:"air_suspension"`
+	StartTime            string `json:"start_time"`
 	CreateAt             string `json:"create_at"`
 	UpdateAt             string `json:"update_at"`
 	DeleteAt             string `json:"delete_at"`

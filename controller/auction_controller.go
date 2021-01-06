@@ -23,13 +23,29 @@ func (pc AuctionController) Index(c *gin.Context) {
 
 func (pc AuctionController) Top(c *gin.Context) {
 	var auction service.AuctionService
-	p, err := auction.GetTopInfo()
+	a, ac, err := auction.GetTopInfo()
 
 	if err != nil {
 		c.AbortWithStatus(404)
 		fmt.Println(err)
 	} else {
-		c.JSON(200, p)
+		fmt.Println(ac[0])
+		for i := 0; i < len(ac); i++ {
+			a[0].Cars[i].StartTime = ac[i].StartTime
+		}
+		c.JSON(200, a)
+	}
+}
+
+func (pc AuctionController) TopAll(c *gin.Context) {
+	var auction service.AuctionService
+	a, err := auction.GetTopAllInfo()
+
+	if err != nil {
+		c.AbortWithStatus(404)
+		fmt.Println(err)
+	} else {
+		c.JSON(200, a)
 	}
 }
 

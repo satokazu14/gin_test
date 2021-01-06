@@ -77,6 +77,7 @@ func router() *gin.Engine {
 	{
 		ctrl := controller.AuctionController{}
 		top.GET("", ctrl.Top)
+		top.GET("all", ctrl.TopAll)
 	}
 
 	return r
