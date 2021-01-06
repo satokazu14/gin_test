@@ -2,10 +2,9 @@ package entity
 
 type User struct {
 	ID           uint   `json:"id"`
-	FirstName    string `json:"firstname"`
-	LastName     string `json:"lastname"`
-	PassWord     string `json:"passwoed"`
-	Mail         string `json:"Mail"`
+	Name         string `json:"name"`
+	PassWord     string `json:"password"`
+	Mail         string `json:"mail"`
 	Phone        string `json:"phone"`
 	Birthday     string `json:"birthday"`
 	Zip          string `json:"zip"`
