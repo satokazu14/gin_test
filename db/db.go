@@ -14,9 +14,10 @@ var (
 
 func Init() {
 	DBMS := "mysql"
-	USER := "root"
+	USER := "admin"
 	PASS := ""
-	PROTOCOL := "tcp(127.0.0.1:3306)"
+	//local環境のmysqlに接続するには「tcp(127.0.0.1:3306)」
+	PROTOCOL := "tcp(database-1.cenyz2blrddy.ap-northeast-1.rds.amazonaws.com:3306)"
 	DBNAME := "hal_motor"
 
 	CONNECT := USER + ":" + PASS + "@" + PROTOCOL + "/" + DBNAME
