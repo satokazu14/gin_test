@@ -6,7 +6,7 @@ type Car struct {
 	Grade                string `json:"grade"`
 	Manufacture          string `json:"manufacture"`
 	ModelYear            string `json:"model_year"`
-	ModelNumber          int    `json:"door_num"`
+	ModelNumber          string `json:"model_number"`
 	Color                string `json:"color"`
 	DriveSystem          string `json:"drive_system"`
 	Transmission         string `json:"transmission"`
@@ -56,7 +56,7 @@ type Car struct {
 	Abs                  int    `json:"abs"`
 	StabilityControl     int    `json:"stability_control"`
 	MitigationBrake      int    `json:"mitigation_brake"`
-	HeadLight            int    `json:"head_light"`
+	HeadLight            string `json:"head_light"`
 	SunRoof              int    `json:"sun_roof"`
 	Aero                 int    `json:"aero"`
 	AlWheel              int    `json:"al_wheel"`
@@ -64,6 +64,7 @@ type Car struct {
 	LiftUp               int    `json:"lift_up"`
 	SuperCharger         int    `json:"super_charger"`
 	AirSuspension        int    `json:"air_suspension"`
+	StartTime            string `json:"start_time"`
 	CreateAt             string `json:"create_at"`
 	UpdateAt             string `json:"update_at"`
 	DeleteAt             string `json:"delete_at"`

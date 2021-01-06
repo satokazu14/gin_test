@@ -25,7 +25,12 @@ func (pc CarController) AddCar(c *gin.Context) {
 // Index action: GET /cars
 func (pc CarController) ShowAllCar(c *gin.Context) {
 	var s service.CarService
+
 	p, err := s.GetAll()
+
+	if limit := c.Query("limit"); limit != "" {
+		p, err = s.GetSum(limit)
+	}
 
 	if err != nil {
 		c.AbortWithStatus(404)

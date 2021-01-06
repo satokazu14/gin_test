@@ -2,7 +2,9 @@ package server
 
 import (
 	"gin_test/controller"
+	"time"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,6 +15,33 @@ func Init() {
 
 func router() *gin.Engine {
 	r := gin.Default()
+
+	// ここからCorsの設定
+	r.Use(cors.New(cors.Config{
+		// アクセスを許可したいアクセス元
+		AllowOrigins: []string{
+			"*",
+		},
+		// アクセスを許可したいHTTPメソッド(以下の例だとPUTやDELETEはアクセスできません)
+		AllowMethods: []string{
+			"POST",
+			"GET",
+			"OPTIONS",
+		},
+		// 許可したいHTTPリクエストヘッダ
+		AllowHeaders: []string{
+			"Access-Control-Allow-Credentials",
+			"Access-Control-Allow-Headers",
+			"Content-Type",
+			"Content-Length",
+			"Accept-Encoding",
+			"Authorization",
+		},
+		// cookieなどの情報を必要とするかどうか
+		AllowCredentials: true,
+		// preflightリクエストの結果をキャッシュする時間
+		MaxAge: 24 * time.Hour,
+	}))
 
 	u := r.Group("/users")
 	{
@@ -32,6 +61,23 @@ func router() *gin.Engine {
 		au.POST("", ctrl.Create)
 		au.PUT("/:id", ctrl.Update)
 		au.DELETE("/:id", ctrl.Delete)
+	}
+
+	car := r.Group("/cars")
+	{
+		ctrl := controller.CarController{}
+		car.GET("", ctrl.ShowAllCar)
+		car.GET("/:id", ctrl.ShowCar)
+		car.POST("", ctrl.AddCar)
+		car.PUT("/:id", ctrl.UpdateCar)
+		car.DELETE("/:id", ctrl.DeleteCar)
+	}
+
+	top := r.Group("/top")
+	{
+		ctrl := controller.AuctionController{}
+		top.GET("", ctrl.Top)
+		top.GET("all", ctrl.TopAll)
 	}
 
 	return r
