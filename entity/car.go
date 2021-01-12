@@ -7,6 +7,8 @@ type Car struct {
 	Manufacture          string `json:"manufacture"`
 	ModelYear            string `json:"model_year"`
 	ModelNumber          string `json:"model_number"`
+	BodyType             string `json:"body_type"`
+	DoorNum              int    `json:"door_num"`
 	Color                string `json:"color"`
 	DriveSystem          string `json:"drive_system"`
 	Transmission         string `json:"transmission"`
@@ -15,6 +17,7 @@ type Car struct {
 	SeatingCapacity      int    `json:"seating_capacity"`
 	ExPoint              int    `json:"ex_point"`
 	InPoint              int    `json:"in_point"`
+	Mileage              int    `json:"mileage"`
 	OneOwner             int    `json:"one_owner"`
 	RepairHistory        int    `json:"repair_history"`
 	NonSmoking           int    `json:"non_smoking"`
