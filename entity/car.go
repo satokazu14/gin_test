@@ -19,12 +19,13 @@ type Car struct {
 	InPoint              int    `json:"in_point"`
 	Mileage              int    `json:"mileage"`
 	OneOwner             int    `json:"one_owner"`
-	RepairHistory        int    `json:"repair_history"`
+	RepairHistory        string `json:"repair_history"`
 	NonSmoking           int    `json:"non_smoking"`
+	AutoInstection       string `json:"auto_instection"`
 	CertifiedUsed        int    `json:"certified_used"`
-	RecycringConsignment int    `json:"recycring_consignment"`
-	LeagalMaintenance    int    `json:"leagal_maintenance"`
-	Warranty             int    `json:"warranty"`
+	RecycringConsignment string `json:"recycring_consignment"`
+	LeagalMaintenance    string `json:"leagal_maintenance"`
+	Warranty             string `json:"warranty"`
 	PurchacePrice        int    `json:"purchace_price"`
 	Description          string `json:"description"`
 	PwSteering           int    `json:"pw_steering"`

@@ -62,6 +62,26 @@ var hl = map[string]string{
 	"ls": "レーザー",
 }
 
+var rh = map[string]string{
+	"0": "無",
+	"1": "有",
+}
+
+var rc = map[string]string{
+	"0": "込",
+	"1": "別",
+}
+
+var lm = map[string]string{
+	"0": "無",
+	"1": "付",
+}
+
+var wr = map[string]string{
+	"0": "無",
+	"1": "付",
+}
+
 func (pc AuctionController) Index(c *gin.Context) {
 	var auction service.AuctionService
 	p, err := auction.GetAll()
@@ -89,6 +109,9 @@ func (pc AuctionController) Top(c *gin.Context) {
 			a[0].Cars[i].Audio = ad[a[0].Cars[i].Audio]
 			a[0].Cars[i].Visual = vi[a[0].Cars[i].Visual]
 			a[0].Cars[i].HeadLight = hl[a[0].Cars[i].HeadLight]
+			a[0].Cars[i].RepairHistory = rh[a[0].Cars[i].RepairHistory]
+			a[0].Cars[i].LeagalMaintenance = lm[a[0].Cars[i].LeagalMaintenance]
+			a[0].Cars[i].Warranty = wr[a[0].Cars[i].Warranty]
 			a[0].Cars[i].StartTime = ac[i].StartTime
 		}
 		c.JSON(200, a)
