@@ -34,9 +34,9 @@ type Car struct {
 	Keyless              int    `json:"keyless"`
 	SmartKey             int    `json:"smart_key"`
 	CarNavigation        int    `json:"car_nabigation"`
-	Tv                   int    `json:"tv"`
-	Audio                int    `json:"audio"`
-	Visual               int    `json:"visual"`
+	Tv                   string `json:"tv"`
+	Audio                string `json:"audio"`
+	Visual               string `json:"visual"`
 	Bluetooth            int    `json:"bluetooth"`
 	Usb                  int    `json:"usb"`
 	Pw_supply            int    `json:"pw_supply"`
