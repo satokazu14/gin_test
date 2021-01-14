@@ -27,6 +27,8 @@ func router() *gin.Engine {
 			"POST",
 			"GET",
 			"OPTIONS",
+			"PUT",
+			"DELETE",
 		},
 		// 許可したいHTTPリクエストヘッダ
 		AllowHeaders: []string{
