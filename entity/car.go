@@ -23,7 +23,7 @@ type Car struct {
 	NonSmoking           int    `json:"non_smoking"`
 	AutoInstection       string `json:"auto_instection"`
 	CertifiedUsed        int    `json:"certified_used"`
-	RecycringConsignment string `json:"recycring_consignment"`
+	RecyclingConsignment string `json:"recycling_consignment"`
 	LeagalMaintenance    string `json:"leagal_maintenance"`
 	Warranty             string `json:"warranty"`
 	PurchacePrice        int    `json:"purchace_price"`

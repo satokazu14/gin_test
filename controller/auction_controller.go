@@ -110,6 +110,7 @@ func (pc AuctionController) Top(c *gin.Context) {
 			a[0].Cars[i].Visual = vi[a[0].Cars[i].Visual]
 			a[0].Cars[i].HeadLight = hl[a[0].Cars[i].HeadLight]
 			a[0].Cars[i].RepairHistory = rh[a[0].Cars[i].RepairHistory]
+			a[0].Cars[i].RecyclingConsignment = rc[a[0].Cars[i].RecyclingConsignment]
 			a[0].Cars[i].LeagalMaintenance = lm[a[0].Cars[i].LeagalMaintenance]
 			a[0].Cars[i].Warranty = wr[a[0].Cars[i].Warranty]
 			a[0].Cars[i].StartTime = ac[i].StartTime
