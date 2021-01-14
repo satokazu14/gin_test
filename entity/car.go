@@ -7,6 +7,8 @@ type Car struct {
 	Manufacture          string `json:"manufacture"`
 	ModelYear            string `json:"model_year"`
 	ModelNumber          string `json:"model_number"`
+	BodyType             string `json:"body_type"`
+	DoorNum              int    `json:"door_num"`
 	Color                string `json:"color"`
 	DriveSystem          string `json:"drive_system"`
 	Transmission         string `json:"transmission"`
@@ -15,13 +17,15 @@ type Car struct {
 	SeatingCapacity      int    `json:"seating_capacity"`
 	ExPoint              int    `json:"ex_point"`
 	InPoint              int    `json:"in_point"`
+	Mileage              int    `json:"mileage"`
 	OneOwner             int    `json:"one_owner"`
-	RepairHistory        int    `json:"repair_history"`
+	RepairHistory        string `json:"repair_history"`
 	NonSmoking           int    `json:"non_smoking"`
+	AutoInstection       string `json:"auto_instection"`
 	CertifiedUsed        int    `json:"certified_used"`
-	RecycringConsignment int    `json:"recycring_consignment"`
-	LeagalMaintenance    int    `json:"leagal_maintenance"`
-	Warranty             int    `json:"warranty"`
+	RecycringConsignment string `json:"recycring_consignment"`
+	LeagalMaintenance    string `json:"leagal_maintenance"`
+	Warranty             string `json:"warranty"`
 	PurchacePrice        int    `json:"purchace_price"`
 	Description          string `json:"description"`
 	PwSteering           int    `json:"pw_steering"`
@@ -31,9 +35,9 @@ type Car struct {
 	Keyless              int    `json:"keyless"`
 	SmartKey             int    `json:"smart_key"`
 	CarNavigation        int    `json:"car_nabigation"`
-	Tv                   int    `json:"tv"`
-	Audio                int    `json:"audio"`
-	Visual               int    `json:"visual"`
+	Tv                   string `json:"tv"`
+	Audio                string `json:"audio"`
+	Visual               string `json:"visual"`
 	Bluetooth            int    `json:"bluetooth"`
 	Usb                  int    `json:"usb"`
 	Pw_supply            int    `json:"pw_supply"`
