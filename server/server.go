@@ -27,6 +27,8 @@ func router() *gin.Engine {
 			"POST",
 			"GET",
 			"OPTIONS",
+			"PUT",
+			"DELETE",
 		},
 		// 許可したいHTTPリクエストヘッダ
 		AllowHeaders: []string{
@@ -88,6 +90,7 @@ func router() *gin.Engine {
 		bid.GET("/user/:id", ctrl.UserId)
 		bid.GET("/car/:id", ctrl.CarId)
 		bid.POST("", ctrl.Create)
+		bid.GET("/result/:id", ctrl.Result)
 	}
 
 	return r

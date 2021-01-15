@@ -12,7 +12,4 @@ type User struct {
 	CardNumber   string `json:"card_number"`
 	CardDate     string `json:"card_date"`
 	CardSecurity string `json:"card_security"`
-	CreateAt     string `json:"create_at"`
-	UpdateAt     string `json:"update_at"`
-	DeleteAt     string `json:"delete_at"`
 }
