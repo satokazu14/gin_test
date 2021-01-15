@@ -70,5 +70,5 @@ type Car struct {
 	AirSuspension        int     `json:"air_suspension"`
 	StartTime            string  `json:"start_time"`
 	ImageNum             int     `json:"image_num"`
-	StartPrice           int     `json:"start_price"`
+	StartPrice           float64 `json:"start_price"`
 }

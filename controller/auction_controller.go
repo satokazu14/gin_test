@@ -3,6 +3,7 @@ package controller
 import (
 	"fmt"
 	"gin_test/service"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -96,6 +97,7 @@ func (pc AuctionController) Index(c *gin.Context) {
 
 func (pc AuctionController) Top(c *gin.Context) {
 	var auction service.AuctionService
+	var strerr error
 	a, ac, err := auction.GetTopInfo()
 
 	if err != nil {
@@ -114,7 +116,12 @@ func (pc AuctionController) Top(c *gin.Context) {
 			a[0].Cars[i].LeagalMaintenance = lm[a[0].Cars[i].LeagalMaintenance]
 			a[0].Cars[i].Warranty = wr[a[0].Cars[i].Warranty]
 			a[0].Cars[i].StartTime = ac[i].StartTime
-			a[0].Cars[i].StartPrice = int(a[0].Cars[i].PurchasePrice * 1.1 * 0.0001)
+			a[0].Cars[i].StartPrice, strerr = strconv.ParseFloat(strconv.FormatFloat(a[0].Cars[i].PurchasePrice*1.1*0.0001, 'f', 1, 64), 64)
+			if strerr != nil {
+				c.AbortWithStatus(404)
+				fmt.Println(err)
+				return
+			}
 		}
 		c.JSON(200, a)
 	}
