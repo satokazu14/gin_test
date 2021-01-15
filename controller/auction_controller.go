@@ -114,6 +114,7 @@ func (pc AuctionController) Top(c *gin.Context) {
 			a[0].Cars[i].LeagalMaintenance = lm[a[0].Cars[i].LeagalMaintenance]
 			a[0].Cars[i].Warranty = wr[a[0].Cars[i].Warranty]
 			a[0].Cars[i].StartTime = ac[i].StartTime
+			a[0].Cars[i].StartPrice = int(a[0].Cars[i].PurchasePrice * 1.1 * 0.0001)
 		}
 		c.JSON(200, a)
 	}
