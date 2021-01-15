@@ -56,6 +56,17 @@ func (s BidService) GetByCarID(userId string) ([]Bid, error) {
 	return bid, nil
 }
 
+func (s BidService) GetResult(auctionId string) ([]Bid, error) {
+	db := db.GetDB()
+	var bid []Bid
+
+	if err := db.Where("auction_id = ?", auctionId).Last(&bid).Error; err != nil {
+		return nil, err
+	}
+
+	return bid, nil
+}
+
 func (s BidService) CreateBid(c *gin.Context) (Bid, error) {
 	db := db.GetDB()
 	var layout = "15:04:05"

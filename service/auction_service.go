@@ -3,7 +3,6 @@ package service
 import (
 	"gin_test/db"
 	"gin_test/entity"
-	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -62,17 +61,14 @@ func (s AuctionService) GetTopAllInfo() ([]Auction, error) {
 
 func (s AuctionService) CreateModel(c *gin.Context) (Auction, error) {
 	db := db.GetDB()
-	var layout = "2006-01-02 15:04:05"
 	var auction Auction
 	var json AuctionRequest
-	now := time.Now()
-	str := now.Format(layout)
 
 	if err := c.BindJSON(&json); err != nil {
 		return auction, err
 	}
 
-	db.Exec("INSERT INTO auctions (name,create_at) VALUES (?,?)", json.Name, str)
+	db.Exec("INSERT INTO auctions (name) VALUES (?)", json.Name)
 
 	db.Last(&auction)
 

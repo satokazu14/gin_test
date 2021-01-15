@@ -34,6 +34,18 @@ func (bc BidController) AuctionId(c *gin.Context) {
 	}
 }
 
+func (bc BidController) Result(c *gin.Context) {
+	id := c.Params.ByName("id")
+	var bid service.BidService
+	p, err := bid.GetResult(id)
+	if err != nil {
+		c.AbortWithStatus(404)
+		fmt.Println(err)
+	} else {
+		c.JSON(200, p)
+	}
+}
+
 func (bc BidController) UserId(c *gin.Context) {
 	id := c.Params.ByName("id")
 	var bid service.BidService
@@ -61,8 +73,8 @@ func (bc BidController) CarId(c *gin.Context) {
 }
 
 func (bc BidController) Create(c *gin.Context) {
-	var auction service.BidService
-	p, err := auction.CreateBid(c)
+	var bid service.BidService
+	p, err := bid.CreateBid(c)
 
 	if err != nil {
 		c.AbortWithStatus(400)
