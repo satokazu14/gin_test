@@ -26,7 +26,7 @@ type Car struct {
 	RecyclingConsignment string `json:"recycling_consignment"`
 	LeagalMaintenance    string `json:"leagal_maintenance"`
 	Warranty             string `json:"warranty"`
-	PurchacePrice        int    `json:"purchace_price"`
+	PurchasePrice        int    `json:"purchase_price"`
 	Description          string `json:"description"`
 	PwSteering           int    `json:"pw_steering"`
 	PwWindow             int    `json:"pw_window"`
