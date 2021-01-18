@@ -90,6 +90,17 @@ func (s AuctionService) GetByID(id string) (Auction, error) {
 	return auction, nil
 }
 
+func (s AuctionService) GetByCarID(id string) (AuctionCar, error) {
+	db := db.GetDB()
+	var auctioncar AuctionCar
+
+	if err := db.Where("car_id = ?", id).First(&auctioncar).Error; err != nil {
+		return auctioncar, err
+	}
+
+	return auctioncar, nil
+}
+
 func (s AuctionService) UpdateByID(id string, c *gin.Context) (Auction, error) {
 	db := db.GetDB()
 	var auction Auction

@@ -59,8 +59,11 @@ func (pc CarController) ShowLimitCar(c *gin.Context) {
 func (pc CarController) ShowCar(c *gin.Context) {
 	carId := c.Params.ByName("id")
 	var s service.CarService
+	var as service.AuctionService
 	var strerr error
 	p, err := s.GetByID(carId)
+
+	q, _ := as.GetByCarID(strconv.FormatUint(uint64(p.ID), 10))
 
 	if err != nil {
 		c.AbortWithStatus(404)
@@ -76,6 +79,7 @@ func (pc CarController) ShowCar(c *gin.Context) {
 		p.RecyclingConsignment = rc[p.RecyclingConsignment]
 		p.LeagalMaintenance = lm[p.LeagalMaintenance]
 		p.Warranty = wr[p.Warranty]
+		p.StartTime = q.StartTime
 		p.StartPrice, strerr = strconv.ParseFloat(strconv.FormatFloat(p.PurchasePrice*1.1*0.0001, 'f', 1, 64), 64)
 		if strerr != nil {
 			c.AbortWithStatus(404)
