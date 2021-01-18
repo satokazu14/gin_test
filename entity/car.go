@@ -71,5 +71,4 @@ type Car struct {
 	StartTime            string  `json:"start_time"`
 	ImageNum             int     `json:"image_num"`
 	StartPrice           float64 `json:"start_price"`
-	Base64               []string
 }

@@ -21,3 +21,11 @@ func (sc SfbidController) ShowAll(c *gin.Context) {
 		c.JSON(200, p)
 	}
 }
+
+func (sc SfbidController) State(c *gin.Context) {
+	id := c.Params.ByName("id")
+	state := c.Params.ByName("state")
+	var s service.SfbidService
+
+	s.UpdateState(id, state)
+}

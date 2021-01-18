@@ -3,6 +3,7 @@ package controller
 import (
 	"fmt"
 	"gin_test/service"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -56,6 +57,37 @@ func (pc CarController) ShowLimitCar(c *gin.Context) {
 
 // Show action: GET /cars/:id
 func (pc CarController) ShowCar(c *gin.Context) {
+	carId := c.Params.ByName("id")
+	var s service.CarService
+	var strerr error
+	p, err := s.GetByID(carId)
+
+	if err != nil {
+		c.AbortWithStatus(404)
+		fmt.Println(err)
+	} else {
+		p.BodyType = bt[p.BodyType]
+		p.GasOil = nr[p.GasOil]
+		p.Tv = tv[p.Tv]
+		p.Audio = ad[p.Audio]
+		p.Visual = vi[p.Visual]
+		p.HeadLight = hl[p.HeadLight]
+		p.RepairHistory = rh[p.RepairHistory]
+		p.RecyclingConsignment = rc[p.RecyclingConsignment]
+		p.LeagalMaintenance = lm[p.LeagalMaintenance]
+		p.Warranty = wr[p.Warranty]
+		p.StartPrice, strerr = strconv.ParseFloat(strconv.FormatFloat(p.PurchasePrice*1.1*0.0001, 'f', 1, 64), 64)
+		if strerr != nil {
+			c.AbortWithStatus(404)
+			fmt.Println(err)
+			return
+		}
+		c.JSON(200, p)
+	}
+}
+
+// Show action: GET /cars/:id
+func (pc CarController) ShowCarD(c *gin.Context) {
 	carId := c.Params.ByName("id")
 	var s service.CarService
 	p, err := s.GetByID(carId)

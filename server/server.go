@@ -70,6 +70,7 @@ func router() *gin.Engine {
 		ctrl := controller.CarController{}
 		car.GET("", ctrl.ShowAllCar)
 		car.GET("/:id", ctrl.ShowCar)
+		car.GET("/:id/d", ctrl.ShowCarD)
 		car.POST("", ctrl.AddCar)
 		car.PUT("/:id", ctrl.UpdateCar)
 		car.DELETE("/:id", ctrl.DeleteCar)
@@ -98,6 +99,7 @@ func router() *gin.Engine {
 	{
 		ctrl := controller.SfbidController{}
 		sfbid.GET("", ctrl.ShowAll)
+		sfbid.PUT("/:id/:state", ctrl.State)
 	}
 
 	return r
