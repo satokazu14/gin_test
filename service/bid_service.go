@@ -109,3 +109,12 @@ func (s BidService) CreateSfbid(c *gin.Context) (Bid, error) {
 
 	return bid, nil
 }
+
+func (s BidService) AuctionBid(bid entity.Bid) error {
+	db := db.GetDB()
+	err := db.Create(&bid).Error
+	if err != nil {
+		return err
+	}
+	return err
+}

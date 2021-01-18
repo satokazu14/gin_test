@@ -238,6 +238,7 @@ func (pc AuctionController) AuctionRoom(c *gin.Context) {
 
 	for {
 		var bid entity.Bid
+		var bidservice service.BidService
 		// メッセージ読み込み
 		err := websocket.ReadJSON(&bid)
 		fmt.Println(bid)
@@ -246,6 +247,7 @@ func (pc AuctionController) AuctionRoom(c *gin.Context) {
 			delete(room.Clients, websocket)
 			break
 		}
+		bidservice.AuctionBid(bid)
 		// メッセージを受け取る
 		room.Broadcast <- bid
 	}
