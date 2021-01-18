@@ -19,3 +19,9 @@ func (ss SfbidService) GetAll() ([]SfbidCar, error) {
 
 	return sf, nil
 }
+
+func (ss SfbidService) UpdateState(id string, state string) {
+	db := db.GetDB()
+
+	db.Exec("UPDATE sfbid_cars SET status = ? WHERE car_id = ?", state, id)
+}
