@@ -83,3 +83,15 @@ func (bc BidController) Create(c *gin.Context) {
 		c.JSON(201, p)
 	}
 }
+
+func (bc BidController) ResultSet(c *gin.Context) {
+	var bid service.BidService
+	p, err := bid.CreateSfbid(c)
+
+	if err != nil {
+		c.AbortWithStatus(400)
+		fmt.Println(err)
+	} else {
+		c.JSON(201, p)
+	}
+}
