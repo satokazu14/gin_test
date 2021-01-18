@@ -91,6 +91,13 @@ func router() *gin.Engine {
 		bid.GET("/car/:id", ctrl.CarId)
 		bid.POST("", ctrl.Create)
 		bid.GET("/result/:id", ctrl.Result)
+		bid.POST("/resultset", ctrl.ResultSet)
+	}
+
+	sfbid := r.Group("/sfbids")
+	{
+		ctrl := controller.SfbidController{}
+		sfbid.GET("", ctrl.ShowAll)
 	}
 
 	return r

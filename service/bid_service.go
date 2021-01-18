@@ -12,6 +12,8 @@ type BidService struct{}
 
 type Bid entity.Bid
 
+type Sfbid entity.SfbidCar
+
 func (s BidService) GetAll() ([]Bid, error) {
 	db := db.GetDB()
 	var bid []Bid
@@ -81,6 +83,27 @@ func (s BidService) CreateBid(c *gin.Context) (Bid, error) {
 	bid.BidTime = str
 
 	if err := db.Create(&bid).Error; err != nil {
+		return bid, err
+	}
+
+	return bid, nil
+}
+
+func (s BidService) CreateSfbid(c *gin.Context) (Bid, error) {
+	db := db.GetDB()
+	var bid Bid
+	var sfbid Sfbid
+
+	if err := c.BindJSON(&bid); err != nil {
+		return bid, err
+	}
+
+	sfbid.CarID = bid.CarId
+	sfbid.UserId = bid.UserId
+	sfbid.Price = bid.Price
+	sfbid.Status = 0
+
+	if err := db.Create(&sfbid).Error; err != nil {
 		return bid, err
 	}
 

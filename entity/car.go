@@ -21,7 +21,7 @@ type Car struct {
 	OneOwner             int     `json:"one_owner"`
 	RepairHistory        string  `json:"repair_history"`
 	NonSmoking           int     `json:"non_smoking"`
-	AutoInstection       string  `json:"auto_instection"`
+	AutoInspection       string  `json:"auto_inspection"`
 	CertifiedUsed        int     `json:"certified_used"`
 	RecyclingConsignment string  `json:"recycling_consignment"`
 	LeagalMaintenance    string  `json:"leagal_maintenance"`
@@ -34,13 +34,13 @@ type Car struct {
 	WAircon              int     `json:"w_aircon"`
 	Keyless              int     `json:"keyless"`
 	SmartKey             int     `json:"smart_key"`
-	CarNavigation        int     `json:"car_nabigation"`
+	CarNabigation        int     `json:"car_nabigation"`
 	Tv                   string  `json:"tv"`
 	Audio                string  `json:"audio"`
 	Visual               string  `json:"visual"`
 	Bluetooth            int     `json:"bluetooth"`
 	Usb                  int     `json:"usb"`
-	Pw_supply            int     `json:"pw_supply"`
+	PwSupply             int     `json:"pw_supply"`
 	BackCamera           int     `json:"back_camera"`
 	AroundCamera         int     `json:"around_camera"`
 	Etc                  int     `json:"etc"`
@@ -71,4 +71,5 @@ type Car struct {
 	StartTime            string  `json:"start_time"`
 	ImageNum             int     `json:"image_num"`
 	StartPrice           float64 `json:"start_price"`
+	Base64               []string
 }
