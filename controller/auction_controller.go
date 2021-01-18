@@ -2,10 +2,15 @@ package controller
 
 import (
 	"fmt"
+	"gin_test/config"
+	"gin_test/entity"
 	"gin_test/service"
+	"log"
+	"net/http"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/gorilla/websocket"
 )
 
 type AuctionController struct{}
@@ -187,5 +192,61 @@ func (pc AuctionController) Delete(c *gin.Context) {
 		fmt.Println(err)
 	} else {
 		c.JSON(204, gin.H{"id #" + id: "deleted"})
+	}
+}
+
+var rooms = make(map[string]*config.Hub)
+var upgrader = websocket.Upgrader{}
+
+func (pc AuctionController) AuctionRoom(c *gin.Context) {
+	chat := c.Param("id")
+
+	// channelが存在する場合
+	_, ok := rooms[chat]
+	if !ok {
+		rooms[chat] = config.NewHub()
+	}
+	room := rooms[chat]
+
+	go func() {
+		for {
+			// メッセージ受け取り
+			bid := <-room.Broadcast
+			fmt.Println(bid)
+			// クライアントの数だけループ
+			for client := range room.Clients {
+				// 書き込む
+				err := client.WriteJSON(bid)
+				if err != nil {
+					log.Printf("error occurred while writing message to client: %v", err)
+					client.Close()
+					delete(room.Clients, client)
+				}
+			}
+		}
+	}()
+	// websocket の状態を更新
+	upgrader.CheckOrigin = func(r *http.Request) bool { return true }
+	websocket, err := upgrader.Upgrade(c.Writer, c.Request, nil)
+	if err != nil {
+		log.Fatal("error upgrading request to a websocket::", err)
+	}
+	// websocket を閉じる
+	defer websocket.Close()
+
+	room.Clients[websocket] = true
+
+	for {
+		var bid entity.Bid
+		// メッセージ読み込み
+		err := websocket.ReadJSON(&bid)
+		fmt.Println(bid)
+		if err != nil {
+			log.Printf("error occurred while reading message: %v", err)
+			delete(room.Clients, websocket)
+			break
+		}
+		// メッセージを受け取る
+		room.Broadcast <- bid
 	}
 }

@@ -60,6 +60,7 @@ func router() *gin.Engine {
 		ctrl := controller.AuctionController{}
 		au.GET("", ctrl.Index)
 		au.GET("/:id", ctrl.Show)
+		au.GET("/:id/car", ctrl.AuctionRoom)
 		au.POST("", ctrl.Create)
 		au.PUT("/:id", ctrl.Update)
 		au.DELETE("/:id", ctrl.Delete)
