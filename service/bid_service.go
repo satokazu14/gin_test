@@ -58,17 +58,21 @@ func (s BidService) GetByCarID(userId string) ([]Bid, error) {
 	return bid, nil
 }
 
-func (s BidService) GetResult(auctionId string) ([]Bid, error) {
+func (s BidService) GetResult(auctionId string) (Bid, error) {
 	db := db.GetDB()
-	var bid []Bid
+	var bid Bid
+	var sfbid Sfbid
 
 	if err := db.Where("auction_id = ?", auctionId).Last(&bid).Error; err != nil {
-		return nil, err
-	}
-
-	if err := db.Create(&bid).Error; err != nil {
 		return bid, err
 	}
+
+	sfbid.CarID = bid.CarId
+	sfbid.UserId = bid.UserId
+	sfbid.Price = bid.Price
+	sfbid.Status = 0
+
+	db.Exec("INSERT INTO sfbid_cars(car_id, user_id, price, status) VALUES (?,?,?,?)", sfbid.CarID, sfbid.UserId, sfbid.Price, sfbid.Status)
 
 	return bid, nil
 }
