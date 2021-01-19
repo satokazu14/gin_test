@@ -66,6 +66,10 @@ func (s BidService) GetResult(auctionId string) ([]Bid, error) {
 		return nil, err
 	}
 
+	if err := db.Create(&bid).Error; err != nil {
+		return bid, err
+	}
+
 	return bid, nil
 }
 
