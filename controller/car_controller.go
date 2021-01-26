@@ -29,6 +29,10 @@ func (pc CarController) ShowAllCar(c *gin.Context) {
 
 	p, err := s.GetAll()
 
+	if q := c.Query("q"); q != "" {
+		p, err = s.GetQuery(q)
+	}
+
 	if limit := c.Query("limit"); limit != "" {
 		p, err = s.GetSum(limit)
 	}

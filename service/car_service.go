@@ -3,6 +3,7 @@ package service
 import (
 	"gin_test/db"
 	"gin_test/entity"
+	"net/url"
 
 	"github.com/gin-gonic/gin"
 )
@@ -43,6 +44,19 @@ func (s CarService) GetSum(limit string) ([]Car, error) {
 	var car []Car
 
 	if err := db.Limit(limit).Find(&car).Error; err != nil {
+		return car, err
+	}
+
+	return car, nil
+}
+
+func (s CarService) GetQuery(q string) ([]Car, error) {
+	db := db.GetDB()
+	var car []Car
+
+	str, _ := url.PathUnescape(q)
+
+	if err := db.Where("name LIKE ?", "%"+str+"%").Find(&car).Error; err != nil {
 		return car, err
 	}
 
